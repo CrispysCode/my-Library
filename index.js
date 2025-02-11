@@ -12,6 +12,10 @@ function Book(title, author, pages, read) {
 
 }
 
+Book.prototype.changeReadStatus = function() {
+    this.read = !this.read;
+};
+
 function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
@@ -51,12 +55,20 @@ function displayBooks() {
             removeBook(index);
         })
 
+        const changeReadStatus = document.createElement('button');
+        changeReadStatus.textContent = 'Change Read Status';
+        changeReadStatus.addEventListener('click', () => {
+            book.changeReadStatus();
+            displayBooks();
+        })
+
         //Add param to card
         bookCard.appendChild(bookTitle);
         bookCard.appendChild(bookAuthor);
         bookCard.appendChild(bookPages);
         bookCard.appendChild(bookReadStatus);
         bookCard.appendChild(removeButton);
+        bookCard.appendChild(changeReadStatus);
 
         bookDisplay.appendChild(bookCard);
 
