@@ -63,6 +63,18 @@ const form = document.querySelector('.form');
 newBookBtn.addEventListener('click', function() {
     bookContainer.style.display = 'block';
 })
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    //Get the user input values from form
+
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const pages = parseInt(document.querySelector('#pages').value);
+    const read = document.querySelector('#read').value;
+    
+})
 function addBook() {
 
 }
