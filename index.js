@@ -55,6 +55,14 @@ function displayBooks() {
 }
 displayBooks();
 
+
+const newBookBtn = document.querySelector('.addBook');
+const bookContainer = document.querySelector('.form-container');
+const form = document.querySelector('.form');
+
+newBookBtn.addEventListener('click', function() {
+    bookContainer.style.display = 'block';
+})
 function addBook() {
-    
+
 }
