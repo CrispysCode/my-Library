@@ -18,15 +18,16 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", "295", false);
-addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, true);
+addBookToLibrary("How I Raised Myself From Failure to Success in Selling", "Frank Bettger", 208, true);
 myLibrary.push(theHobbit);
 
 function displayBooks() {
     bookDisplay.textContent = '';
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book, index) => {
 
         const bookCard = document.createElement("div");
         bookCard.classList.add('bookCard');
+        bookCard.setAttribute('data-index', index);
 
         //Title
         const bookTitle = document.createElement('h2');
@@ -44,16 +45,27 @@ function displayBooks() {
         const bookReadStatus = document.createElement('p');
         bookReadStatus.textContent = `Read: ${book.read ? 'Yes' : 'No'}`;
 
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', () => {
+            removeBook(index);
+        })
+
         //Add param to card
         bookCard.appendChild(bookTitle);
         bookCard.appendChild(bookAuthor);
         bookCard.appendChild(bookPages);
         bookCard.appendChild(bookReadStatus);
+        bookCard.appendChild(removeButton);
 
         bookDisplay.appendChild(bookCard);
 
-    })
+    });
 }
+  function removeBook(index) {
+    myLibrary.splice(index, 1);
+    displayBooks();
+  }
 displayBooks();
 
 
