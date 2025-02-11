@@ -22,6 +22,7 @@ addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, true);
 myLibrary.push(theHobbit);
 
 function displayBooks() {
+    bookDisplay.textContent = '';
     myLibrary.forEach(book => {
 
         const bookCard = document.createElement("div");
@@ -73,8 +74,12 @@ form.addEventListener('submit', function(e) {
     const author = document.querySelector('#author').value;
     const pages = parseInt(document.querySelector('#pages').value);
     const read = document.querySelector('#read').value;
-    
-})
-function addBook() {
 
-}
+    //Add that value to our Library
+    addBookToLibrary(title, author, pages, read);
+
+    bookContainer.style.display = 'none';
+
+    displayBooks();
+
+})
